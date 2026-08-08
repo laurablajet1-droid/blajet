@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "fs/promises";
 import path from "path";
-import { ogFrame } from "@/components/OgFrame";
 
 export const runtime = "nodejs";
 export const alt = "BlaJet · El jet privado, por fin a tu alcance";
@@ -13,16 +12,41 @@ export default async function Image() {
   const fontData = await readFile(path.join(process.cwd(), "public/fonts/og-serif.ttf"));
 
   return new ImageResponse(
-    ogFrame({
-      eyebrow: "Aviación privada",
-      title: "El jet privado, por fin a tu alcance.",
-      subtitle: "Cotiza · Caza un empty leg · Comparte vuelo",
-      stats: [
-        { label: "Charter", value: "12.400 €" },
-        { label: "Empty leg", value: "6.900 €" },
-        { label: "Por plaza", value: "1.850 €" },
-      ],
-    }),
+    (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          background: "#0A0B0F",
+          color: "#F2F1ED",
+          padding: 72,
+          fontFamily: "OGSerif",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ width: 44, height: 44, borderRadius: 8, background: "#C9A961" }} />
+          <div style={{ fontSize: 34, letterSpacing: -1 }}>BlaJet</div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 82, lineHeight: 1.02, letterSpacing: -2, maxWidth: 940 }}>
+            El jet privado, por fin a tu alcance.
+          </div>
+          <div style={{ marginTop: 28, fontSize: 30, color: "#9A9DA6" }}>
+            Cotiza · Caza un empty leg · Comparte vuelo
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: 56, fontSize: 24, color: "#C9A961" }}>
+          <div style={{ display: "flex" }}>12.400 € charter</div>
+          <div style={{ display: "flex" }}>6.900 € empty leg</div>
+          <div style={{ display: "flex" }}>1.850 € por plaza</div>
+        </div>
+      </div>
+    ),
     {
       ...size,
       fonts: [{ name: "OGSerif", data: fontData, style: "normal", weight: 400 }],

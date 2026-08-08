@@ -6,6 +6,8 @@ import { LangProvider } from "@/lib/lang";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { DemoBar } from "@/components/DemoBar";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // Tipografías autoalojadas: el despliegue no depende de ningún servicio externo.
 const display = localFont({
@@ -24,14 +26,14 @@ const sans = localFont({
   fallback: ["system-ui", "sans-serif"],
 });
 
-// La URL base se toma del propio despliegue para que la imagen de las
-// previsualizaciones (WhatsApp, LinkedIn) apunte siempre a un sitio que existe.
-// El día que blajet.com sirva la app, basta con quitar la variable de entorno.
+// La URL base de los metadatos: manda NEXT_PUBLIC_SITE_URL si está definida,
+// después el dominio de producción del despliegue y, por último, blajet.site.
+// De ella cuelga la imagen que ven WhatsApp y LinkedIn al compartir el enlace.
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "https://blajet.com");
+    : "https://www.blajet.site");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -78,6 +80,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <DemoBar />
         </StoreProvider>
         </LangProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
