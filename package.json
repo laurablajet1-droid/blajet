@@ -10,10 +10,12 @@
     "fonts": "node scripts/fetch-fonts.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "lucide-react": "0.446.0",
     "next": "14.2.15",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "lucide-react": "0.446.0",
     "recharts": "2.12.7"
   },
   "devDependencies": {
