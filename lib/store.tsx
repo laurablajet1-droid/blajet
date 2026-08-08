@@ -22,7 +22,7 @@ type State = {
   miles: number;
   bookings: Booking[];
   alerts: Alert[];
-  joinedPools: Record<string, number>;
+  joinedPools: Record<string, number>;   // poolId -> plazas que ha tomado el usuario
   offers: Record<string, { amount: number; status: "pending" | "accepted" | "rejected" }>;
 };
 
