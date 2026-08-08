@@ -1,10 +1,10 @@
 export type Airport = {
-  code: string;
+  code: string;      // IATA
   icao: string;
-  name: string;
+  name: string;      // nombre del aeropuerto / FBO
   city: string;
   country: string;
-  lat: number;
+  lat: number;       // usados por el mapa SVG (proyección simplificada)
   lng: number;
 };
 

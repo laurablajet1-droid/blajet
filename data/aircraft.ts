@@ -8,9 +8,9 @@ export type CategorySpec = {
   speed: string;
   baggage: string;
   note: string;
-  eurPerKm: number;
+  eurPerKm: number;   // base de cálculo del charter
   minPrice: number;
-  co2PerKm: number;
+  co2PerKm: number;   // kg CO2 por km de vuelo (aeronave completa)
 };
 
 export const categories: CategorySpec[] = [

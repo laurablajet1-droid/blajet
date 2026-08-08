@@ -9,7 +9,7 @@ export type PoolPassenger = {
 
 export type Pool = {
   id: string;
-  kind: "charter" | "owner";
+  kind: "charter" | "owner";     // pool creado sobre un charter | plazas cedidas por quien ya vuela
   from: string;
   to: string;
   category: Category;
@@ -18,8 +18,8 @@ export type Pool = {
   hoursFromNow: number;
   durationMin: number;
   seatsTotal: number;
-  seatsMin: number;
-  totalPrice: number;
+  seatsMin: number;              // umbral de confirmación del vuelo
+  totalPrice: number;            // coste total del avión, se reparte entre los apuntados
   passengers: PoolPassenger[];
   host: { name: string; initials: string; rating: number; flights: number; verified: boolean; bio: string };
   rules: string[];

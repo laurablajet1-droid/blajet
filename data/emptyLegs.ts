@@ -7,16 +7,16 @@ export type EmptyLeg = {
   operatorId: string;
   aircraftId: string;
   category: Category;
-  hoursFromNow: number;
+  hoursFromNow: number;      // salida relativa a "ahora" para que la cuenta atrás siempre viva
   durationMin: number;
   seatsTotal: number;
   seatsLeft: number;
-  seatEligible: boolean;
-  priceWhole: number;
-  priceSeat: number | null;
-  charterReference: number;
+  seatEligible: boolean;     // venta por asiento permitida en esa jurisdicción
+  priceWhole: number;        // precio del avión completo
+  priceSeat: number | null;  // precio por asiento
+  charterReference: number;  // lo que costaría el mismo vuelo como charter a medida
   acceptsOffers: boolean;
-  offerFloor: number;
+  offerFloor: number;        // por debajo de esto el operador rechaza (simulado)
   note: string;
 };
 
